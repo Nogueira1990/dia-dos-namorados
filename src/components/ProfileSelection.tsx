@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import NossaFlixLogo from './NossaFlixLogo'
 
@@ -42,6 +43,8 @@ interface Props {
 }
 
 export default function ProfileSelection({ onSelect }: Props) {
+  const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({})
+
   return (
     <div className="min-h-screen bg-netflix-dark flex flex-col items-center justify-center px-4">
       <motion.div
@@ -72,19 +75,22 @@ export default function ProfileSelection({ onSelect }: Props) {
               className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden transition-all duration-200 group-hover:ring-4 ring-white relative"
               style={{ border: `3px solid ${profile.color}88`, background: `${profile.color}22` }}
             >
-              <img
-                src={profile.foto}
-                alt={profile.name}
-                className="w-full h-full object-cover"
-                style={{ objectPosition: 'center top' }}
-                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
-              />
-              <span
-                className="absolute inset-0 flex items-center justify-center font-anton text-4xl select-none pointer-events-none"
-                style={{ color: profile.color }}
-              >
-                {profile.name[0]}
-              </span>
+              {imgErrors[profile.name] ? (
+                <span
+                  className="absolute inset-0 flex items-center justify-center font-anton text-4xl select-none"
+                  style={{ color: profile.color }}
+                >
+                  {profile.name[0]}
+                </span>
+              ) : (
+                <img
+                  src={profile.foto}
+                  alt={profile.name}
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center top' }}
+                  onError={() => setImgErrors(prev => ({ ...prev, [profile.name]: true }))}
+                />
+              )}
             </div>
             <span className="text-netflix-lightgray text-sm md:text-base group-hover:text-white transition-colors font-inter">
               {profile.name}
