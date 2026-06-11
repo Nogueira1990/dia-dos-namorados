@@ -54,9 +54,10 @@ function Counter({ value, label, color = '#E50914', large = false }: {
   return (
     <div className="text-center">
       <div
-        className={`font-anton leading-none ${large ? 'text-5xl md:text-7xl' : 'text-4xl md:text-5xl'}`}
+        className="font-anton leading-none"
         style={{
           color,
+          fontSize: large ? 'clamp(1.6rem, 7vw, 4.5rem)' : 'clamp(1.4rem, 6vw, 3rem)',
           textShadow: `0 0 20px ${color}55, 0 0 40px ${color}25`,
           letterSpacing: '-0.02em',
         }}
@@ -94,9 +95,10 @@ function AnosCounter({ anos, anosInteiros, mesesResto }: { anos: number; anosInt
   return (
     <div className="text-center">
       <div
-        className="font-anton text-5xl md:text-7xl leading-none"
+        className="font-anton leading-none"
         style={{
           color: '#E50914',
+          fontSize: 'clamp(1.6rem, 7vw, 4.5rem)',
           textShadow: '0 0 24px rgba(229,9,20,0.5), 0 0 48px rgba(229,9,20,0.2)',
           letterSpacing: '-0.02em',
         }}

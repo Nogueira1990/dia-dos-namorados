@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import NossaFlixLogo from './NossaFlixLogo'
 
 interface Props {
   onComplete: () => void
@@ -29,14 +28,33 @@ export default function IntroAnimation({ onComplete }: Props) {
             initial={{ scaleX: 0.04, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
+            style={{ overflow: 'hidden', maxWidth: '100vw', width: '100%', textAlign: 'center' }}
           >
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.15, delay: 0.25 }}
             >
-              <NossaFlixLogo size="xl" />
+              <span
+                style={{
+                  fontFamily: 'Anton, sans-serif',
+                  fontSize: 'clamp(2.5rem, 16vw, 8rem)',
+                  color: '#E50914',
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1,
+                  textTransform: 'uppercase',
+                  display: 'inline-block',
+                  textShadow: [
+                    '0 2px 4px rgba(0,0,0,0.9)',
+                    '0 0 80px rgba(229,9,20,0.45)',
+                    '0 4px 64px rgba(229,9,20,0.2)',
+                  ].join(', '),
+                  transform: 'perspective(300px) rotateX(2deg)',
+                  transformOrigin: 'center bottom',
+                }}
+              >
+                NossaFlix
+              </span>
             </motion.div>
           </motion.div>
 
