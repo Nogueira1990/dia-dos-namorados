@@ -5,7 +5,7 @@ export type ProfileName = 'Alexandre' | 'Viviane' | 'Thor' | 'Baunilha'
 
 interface Profile {
   name: ProfileName
-  emoji: string
+  foto: string
   color: string
   saudacao: string
 }
@@ -13,25 +13,25 @@ interface Profile {
 const profiles: Profile[] = [
   {
     name: 'Alexandre',
-    emoji: '👨',
+    foto: '/Fotos/Foto_Alexandre.jpeg',
     color: '#2563EB',
     saudacao: 'Bem-vindo, Alexandre ❤️',
   },
   {
     name: 'Viviane',
-    emoji: '👩',
+    foto: '/Fotos/Foto_Viviane.jpeg',
     color: '#E50914',
     saudacao: 'Bem-vinda, Viviane ❤️\nEssa história é toda sua.',
   },
   {
     name: 'Thor',
-    emoji: '🐕',
+    foto: '/Fotos/Foto_Thor.jpeg',
     color: '#D97706',
     saudacao: 'Oi, Thor! Bom garoto 🐾',
   },
   {
     name: 'Baunilha',
-    emoji: '🐶',
+    foto: '/Fotos/Foto_Baunilha.jpeg',
     color: '#7C3AED',
     saudacao: 'Oi, Baunilha! Você é uma princesa 🐾',
   },
@@ -69,10 +69,15 @@ export default function ProfileSelection({ onSelect }: Props) {
             className="flex flex-col items-center gap-3 group cursor-pointer"
           >
             <div
-              className="w-24 h-24 md:w-28 md:h-28 rounded-lg flex items-center justify-center text-5xl md:text-6xl transition-all duration-200 group-hover:ring-4 ring-white"
-              style={{ background: `${profile.color}33`, border: `2px solid ${profile.color}66` }}
+              className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden transition-all duration-200 group-hover:ring-4 ring-white"
+              style={{ border: `3px solid ${profile.color}88` }}
             >
-              {profile.emoji}
+              <img
+                src={profile.foto}
+                alt={profile.name}
+                className="w-full h-full object-cover"
+                style={{ objectPosition: 'center top' }}
+              />
             </div>
             <span className="text-netflix-lightgray text-sm md:text-base group-hover:text-white transition-colors font-inter">
               {profile.name}

@@ -78,7 +78,20 @@ export default function IntroAnimation({ onComplete }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="mt-5 text-white/65 text-sm md:text-base tracking-[0.35em] uppercase font-inter font-light"
+                style={{
+                  marginTop: '1.25rem',
+                  fontSize: 'clamp(0.75rem, 3.5vw, 1.05rem)',
+                  color: 'rgba(255,255,255,0.78)',
+                  letterSpacing: '0.3em',
+                  textTransform: 'uppercase',
+                  fontFamily: 'Inter, sans-serif',
+                  fontWeight: 300,
+                  textAlign: 'center',
+                  width: '100%',
+                  padding: '0 1rem',
+                  lineHeight: 1.5,
+                  filter: 'none',
+                }}
               >
                 A nossa história, em tela cheia
               </motion.p>
