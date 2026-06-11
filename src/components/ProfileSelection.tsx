@@ -69,15 +69,22 @@ export default function ProfileSelection({ onSelect }: Props) {
             className="flex flex-col items-center gap-3 group cursor-pointer"
           >
             <div
-              className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden transition-all duration-200 group-hover:ring-4 ring-white"
-              style={{ border: `3px solid ${profile.color}88` }}
+              className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden transition-all duration-200 group-hover:ring-4 ring-white relative"
+              style={{ border: `3px solid ${profile.color}88`, background: `${profile.color}22` }}
             >
               <img
                 src={profile.foto}
                 alt={profile.name}
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center top' }}
+                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
               />
+              <span
+                className="absolute inset-0 flex items-center justify-center font-anton text-4xl select-none pointer-events-none"
+                style={{ color: profile.color }}
+              >
+                {profile.name[0]}
+              </span>
             </div>
             <span className="text-netflix-lightgray text-sm md:text-base group-hover:text-white transition-colors font-inter">
               {profile.name}
